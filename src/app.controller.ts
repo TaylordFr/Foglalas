@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Body, Post } from '@nestjs/common';
+import { Controller, Get, Render, Body, Post, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Response } from 'express';
 import { FoglalasDto } from './foglalas.dto';
@@ -44,7 +44,7 @@ export class AppController {
     if(foglalasDto.datum && this.nemMult(foglalasDto.datum) == false){
       errors.push("A dátum nem megfelelő!")
     }
-    if(foglalasDto.idopont && /^\d{2}:\d{2}$/.test(foglalasDto.idopont)){
+    if(foglalasDto.idopont && !(/^[0-9]{2}:[0-9]{2}$/.test(foglalasDto.idopont))){
       errors.push("Az időpont nem jól van megadva")
     }
     if(foglalasDto.letszam && parseInt(foglalasDto.letszam) > 10){
@@ -74,6 +74,11 @@ export class AppController {
 
   }
 
+  @Get('foglalasSuccess')
+  @Render('success')
+  fsuccess(){
+    
+  }
 
   private nemMult(datum){
 

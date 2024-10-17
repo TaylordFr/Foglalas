@@ -13,25 +13,30 @@
         <form method="post">
             <div class="mb-3">
                 <label for="nev" class="form-label">Név</label>
-                <input type="text" name="nev" class="form-control" placeholder="Pl. Gipsz Jakab">
+                <input type="text" name="nev" class="form-control" placeholder="Pl. Gipsz Jakab" value="<%= data.nev%>">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail cím</label>
-                <input type="text" name="email" class="form-control" placeholder="Pl. abc@def.com">
+                <input type="text" name="email" class="form-control" placeholder="Pl. abc@def.com" value="<%= data.email%>">
             </div>
             <div class="row">
                 <div class="col-6">
                     <label for="datum" class="form-label">Dátum</label>
-                    <input type="date" name="datum" class="form-control">
+                    <input type="date" name="datum" class="form-control" value="<%= data.datum%>">
                 </div>
                 <div class="col-6">
                     <label for="idopont" class="form-label">Időpont</label>
-                    <input type="text" name="idopont" class="form-control" placeholder="Pl. 18:30">
+                    <input type="text" name="idopont" class="form-control" placeholder="Pl. 18:30" value="<%= data.idopont%>">
                 </div>
             </div>
             <div class="mb-3">
-                <label for="szemelydb">Létszám(db)</label>
-                <input type="text" name="szemelydb" class="form-control" placeholder="Pl. 10">
+                <label for="letszam">Létszám(db)</label>
+                <input type="text" name="letszam" class="form-control" placeholder="Pl. 10" value="<%= data.letszam%>">
+            </div>
+            <div class="mb-3">
+                <% for(let err of errors) { %> 
+                    <div class="alert alert-danger"><%= err %></div>
+                <% } %>    
             </div>
 
             <button type="submit" class="btn btn-primary">Foglalás</button>
